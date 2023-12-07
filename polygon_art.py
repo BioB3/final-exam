@@ -65,6 +65,8 @@ class gen_art:
         elif self.__art_type == 3 or self.__art_type == 7:
             self.__num_sides = 5
         for i in range(self.__num_art):
+            if self.__art_type == 4 or self.__art_type == 8:
+                self.__num_sides = random.randint(3, 5)
             artwork = Polygon(self.__num_sides,self.__size,self.__orientation,self.__location,self.__color,self.__border_size)
             if self.__art_type <= 4:
                 artwork.draw_polygon(i)
@@ -74,5 +76,5 @@ class gen_art:
 
 
 if __name__ == "__main__":
-    my_art = gen_art(20)
+    my_art = gen_art(30)
     my_art.initiate()
