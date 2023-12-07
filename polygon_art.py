@@ -22,18 +22,18 @@ class Polygon:
             turtle.left(360/self.__num_sides)
         turtle.penup()
     
-    def draw_multi_polygon(self,i):
-        self.draw_polygon(i)
-        reduction_ratio = 0.618
-        turtle.penup()
-        turtle.forward(self.__size[i]*(1-reduction_ratio)/2)
-        turtle.left(90)
-        turtle.forward(self.__size[i]*(1-reduction_ratio)/2)
-        turtle.right(90)
-        self.__location[i][0] = turtle.pos()[0]
-        self.__location[i][1] = turtle.pos()[1]
-        self.__size[i] *= reduction_ratio
-        self.draw_polygon(i)
+    def draw_multi_polygon(self,i,num_times):
+        for _ in range(0,num_times):
+            self.draw_polygon(i)
+            reduction_ratio = 0.618
+            turtle.penup()
+            turtle.forward(self.__size[i]*(1-reduction_ratio)/2)
+            turtle.left(90)
+            turtle.forward(self.__size[i]*(1-reduction_ratio)/2)
+            turtle.right(90)
+            self.__location[i][0] = turtle.pos()[0]
+            self.__location[i][1] = turtle.pos()[1]
+            self.__size[i] *= reduction_ratio
         
 
 class gen_art:
@@ -71,7 +71,7 @@ class gen_art:
             if self.__art_type <= 4:
                 artwork.draw_polygon(i)
             elif self.__art_type > 4:
-                artwork.draw_multi_polygon(i)
+                artwork.draw_multi_polygon(i,3)
         turtle.done()
 
 
